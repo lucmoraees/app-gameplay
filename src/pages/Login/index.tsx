@@ -1,15 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   View,
   Image,
   Text,
+  Alert,
+  ActivityIndicator,
 } from 'react-native';
+import { useAuth } from '../../hook/auth';
 
 import { styles } from './styles';
 import IlustartionImg from '../../assets/illustration.png';
 import ButtonIcon from '../../components/ButtonIcon';
+import { theme } from '../../global/styles/theme';
 
 const Login = () => {
+  const { signIn, loading } = useAuth();
+
+  const handleLogin = async () => {
+    try {
+      await signIn();
+    } catch (error) {
+      Alert.alert(String(error));
+    }
+  }
+
   return (
     <View style={styles.constainer}>
       <Image 
@@ -27,10 +41,16 @@ const Login = () => {
           Crie grupos para jogar seus games {`\n`}
           favoritos com seus amigos. 
         </Text>
-        <ButtonIcon
-          textButton="Entrar com o Discord" 
-          activeOpacity={.7}
-         />
+        {
+          loading ? (
+            <ActivityIndicator color={theme.colors.primary} />
+          ) : (
+            <ButtonIcon
+              textButton="Entrar com o Discord" 
+              onPress={handleLogin}
+            />
+          )
+        }
       </View>
     </View>
   );

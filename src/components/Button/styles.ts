@@ -31,5 +31,5 @@ export const styles = StyleSheet.create({
   iconImg: {
     width: 24,
     height: 18,
-  },
+  }
 });
