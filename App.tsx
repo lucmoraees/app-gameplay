@@ -20,7 +20,7 @@ const App = () => {
   });
 
   if (!foontsLoaded) {
-    return <AppLoading/ >
+    return <AppLoading />
   }
 
   return(

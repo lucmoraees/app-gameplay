@@ -7,7 +7,7 @@ import Avatar from '../Avatar';
 
 export type MemberProps = {
   id: string,
-  userName: string,
+  username: string,
   avatar_url: string,
   status: string,
 }
@@ -24,7 +24,7 @@ const Member = ({ data }: Props) => {
     <View style={styles.container}>
       <Avatar urlImage={data.avatar_url} />
       <View>
-        <Text style={styles.title}>{data.userName}</Text>
+        <Text style={styles.title}>{data.username}</Text>
         <View style={styles.status}>
           <View 
             style={[ 
